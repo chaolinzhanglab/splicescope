@@ -1,0 +1,14 @@
+Package: Splicescope
+Title: Splicescope
+Description: This R package uses splicing profile as input to predicat neuronal
+    maturation using developing cortex samples as reference and outputs the
+    prediction results and PCA plot.
+Version: 0.1
+Authors@R: person("Huijuan Feng", "Developer", role = c("aut", "cre"),
+                     email = "hf2304@cumc.columbia.edu")
+Author: Huijuan Feng
+Maintainer: Huijuan Feng <hf2304@cumc.columbia.edu>
+License: # getOptions('devtools.desc.license')
+LazyData: true
+Depends: R (>= 3.0.1), betareg, ggplot2
+RoxygenNote: 5.0.1

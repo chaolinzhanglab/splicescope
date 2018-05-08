@@ -1,0 +1,8 @@
+<<<<<<< HEAD
+DRG1	DRG1
+DRG2	DRG2
+=======
+sample1	sample1
+sample2	sample2
+sample3	sample3
+>>>>>>> 324c23af6b3f2ceb709a03d1510e8b822439bd17
