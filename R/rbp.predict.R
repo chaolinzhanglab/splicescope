@@ -23,12 +23,8 @@ rbp.predict <- function(data) {
         
     }
     res <- as.data.frame(lapply(res, as.numeric))
-<<<<<<< HEAD
-    rownames(res) <- colnames(data)
-=======
     rownames(res) <- colnames(data) 
     newcolnames<- c("PtbpMaturation", "PtbpConfidenceScore", "NovaMaturation", "NovaConfidenceScore", "RbfoxMaturation", "RbfoxConfidenceScore", "MbnlMaturation", "MbnlConfidenceScore")
     res <- res[, match(newcolnames, colnames(res))]
->>>>>>> 324c23af6b3f2ceb709a03d1510e8b822439bd17
     res
 }

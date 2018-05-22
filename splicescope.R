@@ -1,5 +1,4 @@
 ### suppress warning messages
-.libPaths(c(.libPaths(), "/home/hf2304/galaxy/czlab/NMPre/lib", "/home/hf2304/hf_tools/Rlib"))
 options(warn=-1)
 suppressMessages(library(getopt, quietly=T))
 suppressMessages(library(Splicescope))
@@ -13,11 +12,7 @@ optionSpec = matrix(c(
     'output',         'o',    1, "character",
     'type',           't',    2, "character",
     'cache',          'c',    2, "character",
-<<<<<<< HEAD
-    'label',          'l',    0, "logical",
-=======
     'label',          'l',    2, "integer",
->>>>>>> 324c23af6b3f2ceb709a03d1510e8b822439bd17
     'quantas',        'q',    1, "character",
     'annotation',     'a',    1, "character",
     'verbose',        'v',    2, "integer",
@@ -25,19 +20,10 @@ optionSpec = matrix(c(
     ), byrow=TRUE, ncol=4)
 opt = getopt(optionSpec)
 
-<<<<<<< HEAD
-## Need to be changed on amazon
-# Need to be changed on amazon
-##default parameters
-
-type <- "maturation"
-label <- FALSE
-=======
 ##default parameters
 
 type <- "maturation"
 label <- 1
->>>>>>> 324c23af6b3f2ceb709a03d1510e8b822439bd17
 verbose <- 0
 
 sfile <- opt$splicingmatrix
@@ -50,8 +36,6 @@ if (!is.null(opt$type)) {type <- opt$type}
 if (!is.null(opt$cache)) {cache <- opt$cache}
 if (!is.null(opt$label)) {label <- opt$label}
 if (!is.null(opt$verbose)) {verbose <- opt$verbose}
-#if (!is.null(opt$quantas)) {perlloc <- opt$label}
-#if (!is.null(opt$annotation)) {confloc <- opt$verbose}
 
 
 if ( !is.null(opt$help) | (is.null(opt$splicingmatrix) & is.null(opt$bed)) | is.null(opt$output) |  (!is.null(opt$splicingmatrix) & !is.null(opt$bed)))
@@ -68,12 +52,8 @@ if ( !is.null(opt$help) | (is.null(opt$splicingmatrix) & is.null(opt$bed)) | is.
 	' -q, Quantas dir     The Quantas directory(For example: /usr/local/src/quantas/countit/, must be specified if using -b)\n',
 	' -a, Annotation dir  The annoation directory(For example: /usr/local/src/mm10/, must be specified if using -b)\n',
         '[options]\n',
-        ' -t, analysis-type   Type of analysis to be performed based on splicing profile ([maturation])\n',
-<<<<<<< HEAD
-        ' -l, sample label    Output pdf format plot with sample label\n',
-=======
+        #' -t, analysis-type   Type of analysis to be performed based on splicing profile ([maturation])\n',
         ' -l, sample label    Output pdf format plot with sample label([1-On])\n',
->>>>>>> 324c23af6b3f2ceb709a03d1510e8b822439bd17
 	' -c, cache dir	      Path to write temporary file\n',
         ' -v, verbose         Verbose mode\n',
         ' -h, help            Print usage\n'
@@ -114,11 +94,7 @@ if(type=="maturation"){
 					system(paste("perl ", perlloc ,"summarize_splicing_wrapper.pl -big -weight -conf ", confloc ,"mm10.conf -dbkey mm10 -cass  -v ",bfile[i], " ", strsplit(bfile[i], split="[.]")[[1]][1],sep=""))
 				}
 				matrixfile <- paste(dirname(outfile),"/", Sys.getpid(), "_user.cass.mat.txt", sep="")	
-<<<<<<< HEAD
-				system(paste("perl ", perlloc, "gen_splicing_matrix.pl -v -type cass --min-cov 10 --max-std 0.1 --id2gene2symbol ", confloc, "Mm.seq.all.AS.chrom.can.id2gene2symbol ", bfilename, " ", matrixfile, sep=""))
-=======
 				system(paste("perl ", perlloc, "gen_splicing_matrix.pl -v -type cass --min-cov 10 --max-std 0.1 --id2gene2symbol ", confloc, "Mm.seq.all.devcortex.cass.chrom.can.id2gene2symbol ", bfilename, " ", matrixfile, sep=""))
->>>>>>> 324c23af6b3f2ceb709a03d1510e8b822439bd17
 			}
 			if(!verbose) { 
                                 #cat('load data ...\n')
@@ -126,22 +102,14 @@ if(type=="maturation"){
                                         system(paste("perl ",perlloc ,"summarize_splicing_wrapper.pl -big -weight -conf ",confloc ,"mm10.conf -dbkey mm10 -cass ",bfile[i]," ",strsplit(bfile[i], split="[.]")[[1]][1],sep=""), ignore.stdout=T)
                                 }                             
 				matrixfile <- paste(dirname(outfile),"/", Sys.getpid(), "_user.cass.mat.txt", sep="")  
-<<<<<<< HEAD
-				 system(paste("perl ", perlloc, "gen_splicing_matrix.pl -type cass --min-cov 10 --max-std 0.1 --id2gene2symbol ", confloc, "Mm.seq.all.AS.chrom.can.id2gene2symbol ", bfilename, " ", matrixfile, sep=""),  ignore.stdout=T)
-=======
 				 system(paste("perl ", perlloc, "gen_splicing_matrix.pl -type cass --min-cov 10 --max-std 0.1 --id2gene2symbol ", confloc, "Mm.seq.all.devcortex.cass.chrom.can.id2gene2symbol ", bfilename, " ", matrixfile, sep=""),  ignore.stdout=T)
->>>>>>> 324c23af6b3f2ceb709a03d1510e8b822439bd17
                         }
 			 for (i in 1:length(bfile)){
 				system(paste("rm -rf", strsplit(bfile[i], split="[.]")[[1]][1], sep=" "))
 			}
 			## Predict maturation using output from countit
-<<<<<<< HEAD
-			data <- read.table(matrixfile, stringsAsFactors = F, header=T, sep="\t")
-=======
 			data <- read.table(matrixfile, stringsAsFactors = F, header=T, sep="\t", comment.char="")
 			colnames(data)[1] <- "event_id"
->>>>>>> 324c23af6b3f2ceb709a03d1510e8b822439bd17
                 	system(paste("rm ", matrixfile, sep=""))
 			res <- maturation.predict(data, outfilebase, plot = T, verbose=verbose, label=label)
         		## if output file named as .zip then do normal prediction without sybomlic link
@@ -154,13 +122,6 @@ if(type=="maturation"){
 	}
 
 }
-<<<<<<< HEAD
-if(type=="celltype"){
-	cat("Splicscope for Cell type prediction: Not implemented\n")
-	
-}
-=======
 
->>>>>>> 324c23af6b3f2ceb709a03d1510e8b822439bd17
  
 

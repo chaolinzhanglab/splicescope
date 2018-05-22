@@ -13,37 +13,6 @@ output2html <- function(content, file = "index.html", append = TRUE) {
 }
 
 generate.html <- function(data1, data2, fig = "./dataPCA.png") {
-<<<<<<< HEAD
-    output2html("<html>                                                ")
-    output2html("<head>                                                ")
-    output2html("<title>Splicescope RESULT</title>                           ")
-    output2html("</head>                                               ")
-    output2html("<head>                                                ")
-    output2html("<h1 style=\"font-family:arial\" align=\"center\"> Neuronal Maturation Prediction Result </h1>")
-    output2html("<body>                                                ")
-    output2html("<h1 style=\"font-family:arial;font-size:20\" align=\"center\"> PCA plot using splicing profile </h1>
-")
-    output2html("<div style=\"text-align:center\">")
-    output2html(paste("<img src=\"", fig, "\"", "width=\"900\" height=\"540\" align=\"center\"/>", 
-        collapse = ""))
-    ## insert pdf output2html(paste('<EMBED src=\'',fig, '\'', 'width=\'444\'
-    ## height=\'345\'></EMBED>', collapse = ''))
-    output2html("</div>")
-    output2html("<h1 style=\"font-family:arial;font-size:20\" align=\"center\">Prediction Results using all splicing profile </h1>
-")
-    output2html(get.htmldf(data1))
-    output2html("<h1 style=\"font-family:arial;font-size:20\" align=\"center\">Prediction Results using RBP-specific splicing profile </h1>
-")
-    output2html(get.htmldf(data2))
-    output2html("\n<hr size=1>")
-    output2html("<font style=\"font-family:arial\" size=-1>")
-    output2html("<center>")
-    output2html("Created by Splicescope")
-    output2html("</center>")
-    output2html("<hr>")
-    output2html("</body>")
-    output2html("</html>")
-=======
    output2html("<html>    ")
 output2html("<head>                                                 ")
 output2html("<title>Splicescope Results </title>                            ")
@@ -284,5 +253,4 @@ output2html("Copy right (c) 2016-2017, Zhang Laboratory")
 output2html("</body> ")
 output2html("</html> ")
 
->>>>>>> 324c23af6b3f2ceb709a03d1510e8b822439bd17
 }

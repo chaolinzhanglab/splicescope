@@ -7,53 +7,6 @@
 #'
 #' @examples
 
-<<<<<<< HEAD
-get.htmldf <- function(x, Border = 1, innerBorder = 0, classfirstline = "firstline", classfirstcolumn = "firstcolumn", 
-    classcellinside = "cellinside", append = TRUE, align = "center", captionalign = "bottom", classtable = "dataframe", 
-    digits = 2, row.names = TRUE, ...) {
-    
-    
-    txt <- paste("\n<p align=", align, ">")
-    # txtcaption <- ifelse(is.null(caption), '', paste('\n<caption align=', captionalign, ' class=',
-    # classcaption, '>', caption, '</caption>\n', sep=''))
-    if (!is.null(Border)) 
-        txt <- paste(txt, "\n<table cellspacing=0 border:1px solid black; table-layout: fixed; width:150px; style=\"font-family:arial;font-size=10;text-align=\"center\"", 
-            "> \n<tr><td>", "\n\t<table border=", Border, " class=", classtable, ">", sep = "") else txt <- paste(txt, "\n<table border=", innerBorder, " class=", classtable, " cellspacing=0>", 
-        txtcaption, sep = "")
-    txt <- paste(txt, "\t<tbody>", sep = "\n")
-    
-    VecDebut <- c(if (row.names) paste("\n\t\t<th>", sep = "", collapse = ""), rep(paste("\n\t\t<th>", 
-        sep = "", collapse = ""), ncol(x) - 1))
-    VecMilieu <- c(if (row.names) "Sample", as.character(dimnames(x)[[2]]))
-    VecFin <- c(if (row.names) rep(paste("", "</th>", collapse = ""), ncol(x) - 1), "</th>")
-    txt <- paste(txt, "\n\t<tr class=", classfirstline, ">", paste(VecDebut, VecMilieu, VecFin, sep = "", 
-        collapse = ""), "\n\t</tr>")
-    
-    x.formatted <- format(x, digits = 2)
-    x.formatted <- as.matrix(x.formatted)
-    x.formatted[is.na(x.formatted)] <- " "
-    x.formatted[is.nan(x.formatted)] <- " "
-    
-    for (i in 1:dim(x)[1]) {
-        if (i == 1) {
-            VecDebut <- c(if (row.names) paste("\n<td class=", classfirstcolumn, ">", sep = ""), paste("\n<td class=", 
-                classcellinside, ">", sep = ""), rep(paste("\n<td class=", classcellinside, ">", sep = ""), 
-                dim(x)[2] - 1))
-            VecMilieu <- c(if (row.names) dimnames(x)[[1]][i], x.formatted[i, ])
-            VecFin <- c(if (row.names) "\n</td>", rep("\n</td>", dim(x)[2] - 1), "\n</td></tr>\n")
-        } else {
-            VecDebut <- c(if (row.names) paste("\n<td class=", classfirstcolumn, ">", sep = ""), paste(rep(paste("\n<td class=", 
-                classcellinside, ">", sep = ""), dim(x)[2])))
-            VecMilieu <- c(if (row.names) dimnames(x)[[1]][i], x.formatted[i, ])
-            VecFin <- c(if (row.names) "\n</td>", rep("\n</td>", dim(x)[2] - 1), "\n</td></tr>\n")
-        }
-        txt <- paste(txt, "\n<tr align=", align, ">", paste(VecDebut, VecMilieu, VecFin, sep = "", 
-            collapse = ""))
-    }
-    txt <- paste(txt, "\n\t</tbody>\n</table>\n", if (!is.null(Border)) 
-        "</td></table>\n", "<br>")
-    txt
-=======
 get.htmldf <- function(x,  rbp=NULL) {
 	x.formatted <- format(x, digits = 2)
     x.formatted <- as.matrix(x.formatted)
@@ -134,5 +87,4 @@ get.htmldf <- function(x,  rbp=NULL) {
 		output2html("</table>")	
 		
 	}     
->>>>>>> 324c23af6b3f2ceb709a03d1510e8b822439bd17
 }

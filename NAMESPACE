@@ -15,7 +15,4 @@ export(prefilter)
 export(rbp.beta.predict)
 export(rbp.predict)
 export(submedian)
-<<<<<<< HEAD
-=======
 export(na.replace.datamean)
->>>>>>> 324c23af6b3f2ceb709a03d1510e8b822439bd17

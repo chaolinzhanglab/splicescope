@@ -8,11 +8,7 @@
 #' @export
 #'
 #' @examples
-<<<<<<< HEAD
-maturation.predict <- function(test.data, outfile, plot = T, verbose = verbose, label) {
-=======
 maturation.predict <- function(test.data, outfile, plot = T, verbose = verbose, label=1) {
->>>>>>> 324c23af6b3f2ceb709a03d1510e8b822439bd17
     if (verbose) {
         cat("Processing data......\n")
     }
@@ -35,11 +31,7 @@ maturation.predict <- function(test.data, outfile, plot = T, verbose = verbose, 
         test.pca <- as.data.frame(predict(devcortex.pca, t(test.Smodule2))[, 1:2])
         test.plot <- data.frame(matrix("", ncol = ncol(data.plot), nrow = ncol(test.Smodule3)), stringsAsFactors = F)
         colnames(test.plot) <- colnames(data.plot)
-<<<<<<< HEAD
-        test.plot$Group <- "UserDefine"
-=======
         test.plot$Group <- "UserDefined"
->>>>>>> 324c23af6b3f2ceb709a03d1510e8b822439bd17
         test.plot$Name <- colnames(test.Smodule3)
         test.plot$True.Age <- NA
         test.plot$True.Label <- NA
@@ -60,11 +52,7 @@ maturation.predict <- function(test.data, outfile, plot = T, verbose = verbose, 
     if (verbose) {
         cat("Generating zip file......\n")
     }
-<<<<<<< HEAD
-    if (label) {
-=======
     if (label==1) {
->>>>>>> 324c23af6b3f2ceb709a03d1510e8b822439bd17
         system(paste("zip -qm", outfile, "dataPCA.png dataPCA.pdf dataPCAwithlabel.pdf index.html result_prediction.txt result_pca.txt", 
             collapse = ""))
     } else {
