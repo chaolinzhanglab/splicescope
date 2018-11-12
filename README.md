@@ -1,4 +1,4 @@
-# splicescope
+# Splicescope
 
 Splicescope: prediction of neuronal maturation stages using splicing profile
 
